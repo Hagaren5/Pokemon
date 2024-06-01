@@ -1,5 +1,4 @@
-import { NavLink } from 'react-router-dom'
-import Button from '../components/Button'
+import Button from '@/components/Button'
 
 export default function Pokedex() {
   return (

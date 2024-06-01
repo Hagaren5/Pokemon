@@ -1,12 +1,12 @@
 import { Routes , Route } from 'react-router-dom'
-import Landing from './pages/Landing'
-import Pokedex from './pages/Pokedex'
+import Landing from '@/pages/Landing'
+import Pokedex from '@/pages/Pokedex'
 
 function App() {
   return (
     <>
       <Routes>
-        <Route  path="/" exact element={<Landing />}> </Route>
+        <Route  path="/" element={<Landing />}> </Route>
         <Route path="/pokedex" element={<Pokedex />}></Route>
       </Routes>
     </>
