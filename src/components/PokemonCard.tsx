@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getTypeColorClass } from '@/utils/utils'
+import { NavLink } from 'react-router-dom'
 
 interface PokemonCardProps {
   name: string
@@ -42,16 +43,25 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ name }) => {
   }
 
   const typeClass = pokemonData ? getTypeColorClass(pokemonData.types[0].type.name) : 'bg-gray-200'
+  const typeClassSecondary = pokemonData ? getTypeColorClass(pokemonData.types[1]?.type.name) : 'bg-gray-200'
 
   return (
+    <NavLink to={`/pokemon-details/${name}`}>
     <div
       className={`h-62 w-40 rounded-lg hover:duration-700 shadow-lg ${typeClass} bg-opacity-50 hover:bg-opacity-100 m-2 p-2 border-2 flex flex-col justify-center`}
     >
-      <h2 className='capitalize'>{pokemonData.name}</h2>
-      <img className="max-w-40" src={pokemonData.sprites.front_default} alt={pokemonData.name} />
-      <p className="capitalize">{pokemonData.types[0].type.name}</p>
-      {pokemonData.types[1]?.type.name != null ? <p className="capitalize">{pokemonData.types[1].type.name}</p> : null}
+      <img className='max-w-40' src={pokemonData.sprites.front_default} alt={pokemonData.name} />
+      <h2 className='capitalize flex justify-center font-bold pb-1'>{pokemonData.name}</h2>
+      <span className='flex justify-around'>
+        <p className={`${typeClass} capitalize rounded-full px-2 border-2`}>{pokemonData.types[0].type.name}</p>
+        {pokemonData.types[1]?.type.name != null ? (
+          <p className={`${typeClassSecondary} capitalize rounded-full px-2 border-2`}>
+            {pokemonData.types[1].type.name}
+          </p>
+        ) : null}
+      </span>
     </div>
+    </NavLink>
   )
 }
 

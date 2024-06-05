@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Landing from '@/pages/Landing'
 import Pokedex from '@/pages/Pokedex'
 import Login from '@/pages/Login'
+import PokemonDetails from '@/pages/PokemonDetails'
 import Header from '@/components/Header'
 
 
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Landing />}></Route>
         <Route path='/pokedex' element={<Pokedex />}></Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='pokemon-details/:name' element={<PokemonDetails />}></Route>
       </Routes>
     </div>
   )
